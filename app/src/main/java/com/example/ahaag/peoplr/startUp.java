@@ -148,7 +148,10 @@ public class startUp extends Application {
 
     public static void loadProfilePhoto(ImageView imageView){
         if(photo == null) new ProfilePhotoDownloadTask().execute();
-        else imageView.setImageBitmap(photo);//Bitmap.createScaledBitmap(photo, 150, 150, false));
+        else {
+            if (photo.getHeight() > photo.getWidth()) imageView.setImageBitmap(Bitmap.createBitmap(photo, 0, (photo.getHeight() - photo.getWidth())/2, photo.getWidth(), photo.getWidth()));
+            else imageView.setImageBitmap(Bitmap.createBitmap(photo, (photo.getWidth() - photo.getHeight()) / 2, 0, photo.getHeight(), photo.getHeight()));
+        }
     }
 
     public static void checkBlurb(String testBlurb){

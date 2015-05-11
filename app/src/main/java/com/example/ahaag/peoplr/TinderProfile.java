@@ -319,7 +319,8 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
                     connection.connect();
                     InputStream input = connection.getInputStream();
                     Bitmap myBitmap = BitmapFactory.decodeStream(input);
-                    images.add(myBitmap);
+                    if (myBitmap.getHeight() > myBitmap.getWidth()) images.add(Bitmap.createBitmap(myBitmap, 0, (myBitmap.getHeight() - myBitmap.getWidth())/2, myBitmap.getWidth(), myBitmap.getWidth()));
+                    else images.add(Bitmap.createBitmap(myBitmap, (myBitmap.getWidth() - myBitmap.getHeight())/2, 0, myBitmap.getHeight(), myBitmap.getHeight()));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
