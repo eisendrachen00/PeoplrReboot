@@ -68,8 +68,6 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
     int latestSwipe = 0;
     int lastSent = 0;
 
-    startUp s;
-
     TinderProfile activity;
 
     @Override
@@ -88,7 +86,6 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
         Intent i = getIntent();
         String tag = i.getStringExtra("tag");
         tagtext.setText(tag);
-        s = ((startUp) getApplicationContext());
         //THis is the tag id!!1
         tagID = i.getIntExtra("id", 0);
         activity = this;
@@ -97,14 +94,14 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
 
         tagUpdate = new ArrayList<NameValuePair>();
         tagUpdate.add(new BasicNameValuePair("tag_id", Integer.toString(tagID)));
-        tagUpdate.add(new BasicNameValuePair("user_id", Integer.toString(s.getUserId()))); //TODO MAKE THIS THE REAL USER
+        tagUpdate.add(new BasicNameValuePair("user_id", Integer.toString(startUp.getUserId()))); //TODO MAKE THIS THE REAL USER
 
         new TagUpdateTask(activity).execute();
 
         swipes = new ArrayList<List<NameValuePair>>();
         params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag_id", Integer.toString(tagID)));
-        params.add(new BasicNameValuePair("user_id", Integer.toString(s.getUserId()))); //TODO MAKE THIS THE REAL USER
+        params.add(new BasicNameValuePair("user_id", Integer.toString(startUp.getUserId()))); //TODO MAKE THIS THE REAL USER
 
         new UserListDownloadTask(this).execute();
 
@@ -194,9 +191,9 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
                     //TODO SEND SWIPE RESULT = ACCEPTED
 
                     List<NameValuePair> swipe = new ArrayList<NameValuePair>();
-                    swipe.add(new BasicNameValuePair("user_id", Integer.toString(s.getUserId())));
+                    swipe.add(new BasicNameValuePair("user_id", Integer.toString(startUp.getUserId())));
                     swipe.add(new BasicNameValuePair("tag_id", Integer.toString(tagID)));
-                    swipe.add(new BasicNameValuePair("matcher_id", Integer.toString(s.getUserId())));
+                    swipe.add(new BasicNameValuePair("matcher_id", Integer.toString(startUp.getUserId())));
                     swipe.add(new BasicNameValuePair("matchee_id", Integer.toString(card.getId())));
                     swipe.add(new BasicNameValuePair("accepted", "true"));
 
@@ -216,9 +213,9 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
                     //TODO SEND SWIPE RESULT = REJECTED
 
                     List<NameValuePair> swipe = new ArrayList<NameValuePair>();
-                    swipe.add(new BasicNameValuePair("user_id", Integer.toString(s.getUserId())));
+                    swipe.add(new BasicNameValuePair("user_id", Integer.toString(startUp.getUserId())));
                     swipe.add(new BasicNameValuePair("tag_id", Integer.toString(tagID)));
-                    swipe.add(new BasicNameValuePair("matcher_id", Integer.toString(s.getUserId())));
+                    swipe.add(new BasicNameValuePair("matcher_id", Integer.toString(startUp.getUserId())));
                     swipe.add(new BasicNameValuePair("matchee_id", Integer.toString(card.getId())));
                     swipe.add(new BasicNameValuePair("accepted", "false"));
 
