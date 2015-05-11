@@ -25,7 +25,7 @@ public class startUp extends Application {
     private static Context context = null;
 
     private static String fb_access_token = "";
-    private static int id = -1;
+    private static int id = 9;
     private static String name = "";
     private static String blurb = "";
     private static double latitude = 0;
