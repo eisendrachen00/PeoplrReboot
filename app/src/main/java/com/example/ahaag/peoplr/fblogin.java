@@ -71,7 +71,7 @@ public class fblogin extends Activity {
              latitude = location.getLatitude();
         }
         catch (NullPointerException e){
-             longitude = 89.4;
+             longitude = -89.4;
              latitude = 43.0667;
         }
         super.onCreate(savedInstanceState);
