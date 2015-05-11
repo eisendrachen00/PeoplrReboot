@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -307,7 +306,7 @@ public class Matches extends Activity implements AdapterView.OnItemClickListener
         @Override
         protected void onPostExecute(String result) {
 
-            Toast.makeText(activity.getApplicationContext(), (String) result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity.getApplicationContext(), (String) result, Toast.LENGTH_LONG).show();
             onMatchResponse(result);
             dialog.dismiss();
         }
