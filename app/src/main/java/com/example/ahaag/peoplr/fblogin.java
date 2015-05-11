@@ -130,7 +130,7 @@ public class fblogin extends Activity {
                     @Override
                     public void onCancel() {
                         Toast.makeText(getApplicationContext(),
-                                "Cancelling Login", Toast.LENGTH_LONG)
+                                "Cancelling Login", Toast.LENGTH_SHORT)
                                 .show();
                         // App code
 
@@ -139,7 +139,7 @@ public class fblogin extends Activity {
                     @Override
                     public void onError(FacebookException exception) {
                         Toast.makeText(getApplicationContext(),
-                                "There has been an error", Toast.LENGTH_LONG)
+                                "There has been an error", Toast.LENGTH_SHORT)
                                 .show();
 
                     }
@@ -232,7 +232,7 @@ public class fblogin extends Activity {
         @Override
         protected void onPostExecute(String result) {
             Log.w("UserCreateTask", "In onPostExecute");
-            Toast.makeText(currContext, "You have been logged in!" + result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(currContext, "You have been logged in!" + result, Toast.LENGTH_LONG).show();
             onUserCreate(result);
             dialog.dismiss();
         }

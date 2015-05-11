@@ -81,7 +81,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
         setContentView(R.layout.activity_tinder_profile);
 
         Toast.makeText(getApplicationContext(),
-                "Swipe right to like and left to dislike", Toast.LENGTH_LONG)
+                "Swipe right to approve and left to reject!", Toast.LENGTH_LONG)
                 .show();
 
         TextView tagtext = (TextView) findViewById(R.id.tagtext);
@@ -165,7 +165,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
             e.printStackTrace();
         }
 
-        Toast.makeText(getApplicationContext(), (String) list.toString(), Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), (String) list.toString(), Toast.LENGTH_LONG).show();
         //TODO
     }
 
@@ -188,7 +188,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
                 @Override
                 public void onLike() {
                     Toast.makeText(getApplicationContext(),
-                            "Liked", Toast.LENGTH_LONG)
+                            "Approved", Toast.LENGTH_LONG)
                             .show();
 
                     //TODO SEND SWIPE RESULT = ACCEPTED
@@ -210,7 +210,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
                 public void onDislike() {
                     // Log.i("Swipeable Cards","I dislike the card");
                     Toast.makeText(getApplicationContext(),
-                            "Disliked", Toast.LENGTH_LONG)
+                            "Rejected", Toast.LENGTH_LONG)
                             .show();
 
                     //TODO SEND SWIPE RESULT = REJECTED
@@ -365,7 +365,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
         protected String doInBackground(Void... args) {
             try {
                 return loadFromNetwork("http://peoplr-eisendrachen00-4.c9.io/get_users_for_swiping_min");
-            } catch (IOException e) {
+            } catch(IOException e) {
                 return ("Connection error!");
             }
         }
@@ -519,7 +519,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(activity.getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(activity.getApplicationContext(), result, Toast.LENGTH_SHORT).show();
         }
 
         /** Initiates the fetch operation. */
@@ -626,7 +626,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(activity.getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(activity.getApplicationContext(), result, Toast.LENGTH_SHORT).show();
         }
 
         /** Initiates the fetch operation. */
