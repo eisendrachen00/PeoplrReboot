@@ -373,7 +373,7 @@ public class TinderProfile extends Activity implements AdapterView.OnItemClickLi
         @Override
         protected void onPostExecute(String result) {
 
-            Toast.makeText(activity.getApplicationContext(), (String) result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity.getApplicationContext(), (String) result, Toast.LENGTH_LONG).show();
 
             try {
                 onUserListResponse(result);
