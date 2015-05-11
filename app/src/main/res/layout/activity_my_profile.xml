@@ -55,15 +55,15 @@
             android:layout_margin="20dp"
 
             />
-        <Button
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="To edit Description"
-            android:textSize="10dp"
-            android:id="@+id/Button"
-            android:layout_below="@+id/description"
-            android:onClick="selfDestruct"
-            />
+        <!--<Button-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:text="To edit Description"-->
+            <!--android:textSize="10dp"-->
+            <!--android:id="@+id/Button"-->
+            <!--android:layout_below="@+id/description"-->
+            <!--android:onClick="selfDestruct"-->
+            <!--/>-->
     </RelativeLayout>
     <!-- The navigation drawer -->
     <ListView android:id="@+id/left_drawer"

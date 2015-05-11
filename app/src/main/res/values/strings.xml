@@ -28,6 +28,21 @@
     <string name="title_activity_facebook">FacebookActivity</string>
     <string name="title_activity_matches_profile">MatchesProfile</string>
     <string name="title_activity_edit_info">EditInfo</string>
+
+    <string name="interests">Interests</string>
+
+    <!-- Profile and Match Profile Strings-->
+    <string name="descriptionheader">Description</string>
     <string name="blurb">This is where you can describe yourself!</string>
+    <string name="contact_infoheader">Contact Info</string>
+    <string name="contact_info">This is where you let people know how to contact you!</string>
+    <string name="name">Name</string>
+
+    <!-- Edit info Strings -->
+    <string name="dview_header">To change description:</string>
+    <string name="dedit_info">New description here!</string>
+    <string name="cview_header">To change your contact info:</string>
+    <string name="cedit_info">New contact info here!</string>
+    <string name="save_butt">Save</string>
 
 </resources>

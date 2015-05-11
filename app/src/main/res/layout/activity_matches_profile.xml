@@ -9,7 +9,8 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout">
         <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
@@ -17,55 +18,85 @@
         <!--android:layout_centerVertical="true"-->
         <!--android:layout_centerHorizontal="true" -->
         <!--/>-->
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="name"
 
-            android:background="#ffff"
-            android:layout_below="@+id/butt"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
-
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@+id/username"
-            android:id="@+id/imageView1"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/image1"
-
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/description"
-            android:layout_below="@+id/imageView1"
-            android:text="This is where you describe youself.
-    What you like to do, your personality, etc, etc"
-            android:layout_margin="20dp"
-            android:background="#ffff"
-            />
         <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/contactInfo"-->
-            <!--android:layout_below="@+id/description"-->
-            <!--android:text="contact info"-->
-            <!--android:layout_margin="20dp"-->
-            <!--android:background="#ffff"-->
-            <!--/>-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/contactInfo"-->
+        <!--android:layout_below="@+id/description"-->
+        <!--android:text="contact info"-->
+        <!--android:layout_margin="20dp"-->
+        <!--android:background="#ffff"-->
+        <!--/>-->
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="BACK"
             android:id="@+id/butt"
             android:onClick="selfDestruct"
-            android:background="#ffa9cdff"/>
+            android:background ="@drawable/back_button"/>
+
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/description"
+        android:text="@string/blurb"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageView1"
+        android:scaleType="fitXY"
+        android:src="@drawable/image1"
+
+        android:layout_below="@+id/username"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:text="@string/name"
+
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true" />
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+        <!--android:text="@string/contact_infoheader"-->
+        <!--android:id="@+id/textView2"-->
+        <!--android:layout_below="@+id/description"-->
+        <!--android:layout_alignStart="@+id/description"-->
+        <!--android:layout_marginTop="24dp" />-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/descriptionheader"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/imageView1"
+        android:layout_alignStart="@+id/description" />
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="@string/contact_info"-->
+        <!--android:id="@+id/textView4"-->
+        <!--android:layout_below="@+id/textView2"-->
+        <!--android:layout_alignStart="@+id/textView2" />-->
 
 </RelativeLayout>
