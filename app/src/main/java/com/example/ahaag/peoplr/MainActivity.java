@@ -17,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -239,7 +238,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         @Override
         protected void onPostExecute(String result) {
 
-            Toast.makeText(activity.getApplicationContext(), (String) result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity.getApplicationContext(), (String) result, Toast.LENGTH_LONG).show();
 
             try {
                 onTagResponse(result);
