@@ -1,6 +1,7 @@
 package com.example.ahaag.peoplr;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -25,6 +26,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import java.io.BufferedWriter;
@@ -98,40 +100,22 @@ public class fblogin extends Activity {
                                                             GraphResponse response) {
                                         // Application code String id = Profile.getCurrentProfile().getId();
                                         fbId = Profile.getCurrentProfile().getId();
-//
-//                                        Log.w("FB ID #1: ", fbId);
-//                                        Log.w("FB ID #2: ", "" + Profile.getCurrentProfile().getLinkUri());
-//                                        Log.w("FB ID #3: ", "" + Profile.getCurrentProfile().getProfilePictureUri(50, 50));
-//                                        Log.w("FB ID #4: ", "" + Profile.getCurrentProfile().describeContents());
-//                                        Log.w("FB ID #5: ", "" + Profile.getCurrentProfile().hashCode());
-//                                        Log.w("FB ID #6: ", "" + Profile.getCurrentProfile().toString());
-//                                        //Log.w("FB ID #6: ", "" + User.getId().getLink());
-//
-//                                        https://graph.facebook.com/911644848881370/picture
-//
-//                                        Log.w("FB ID #6: ", "" + //.objectID);
-//                                        //.target_id());
                                         first_name = Profile.getCurrentProfile().getFirstName();
                                         last_name = Profile.getCurrentProfile().getLastName();
                                         picture = "https://graph.facebook.com/" + fbId + "/picture?type=large";
-                                        //Log.w("STUFF", "HERE: " + id + " " + " " + first_name + " " + last_name + " " + picture);
-
-                                        //picture = Profile.getCurrentProfile().getProfilePictureUri(150, 150).toString();
-
                                         String name = first_name + " " + last_name;
                                         startUp.createUser(fbId, name, latitude, longitude, picture, currContext);
                                         // to log in as a demo user, replace fbId w/ Integer.toString(THEIR FB ID)
 
-//                                        params = new ArrayList<NameValuePair>();
-//                                        params.add(new BasicNameValuePair("fb_access_token", id));
-//                                        params.add(new BasicNameValuePair("name", first_name + " " + last_name)); //TODO MAKE THIS THE REAL USER
-//                                        params.add(new BasicNameValuePair("photo_url", picture)); //ProfPic
-//                                        params.add(new BasicNameValuePair("latitude", Double.toString(latitude)));
-//                                        params.add(new BasicNameValuePair("longitude", Double.toString(longitude)));
-//
-//                                        new UserCreateTask(activity).execute();
+                                        params = new ArrayList<NameValuePair>();
+                                        params.add(new BasicNameValuePair("fb_access_token", fbId));
+                                        params.add(new BasicNameValuePair("name", first_name + " " + last_name)); //TODO MAKE THIS THE REAL USER
+                                        params.add(new BasicNameValuePair("photo_url", picture)); //ProfPic
+                                        params.add(new BasicNameValuePair("latitude", Double.toString(latitude)));
+                                        params.add(new BasicNameValuePair("longitude", Double.toString(longitude)));
 
-                                        //Thread.sleep(1000);
+                                        new UserCreateTask(activity).execute();
+
 
                                     }
                                 });
@@ -169,22 +153,17 @@ public class fblogin extends Activity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    protected void advanceToMain(){
-        Intent intent = new Intent(currContext, MainActivity.class);
-        startActivity(intent);
-    }
-
     protected void onUserCreate(String result){
         //set user id
 
         Gson gson = new Gson();
-        List<User> users = new ArrayList<User>();
+        User user = null;
 
         String jsonOutput = result.trim();
-        Type listType = new TypeToken<List<User>>(){}.getType();
-        users = (List<User>) gson.fromJson(jsonOutput, listType);
+        Type userType = new TypeToken<User>(){}.getType();
+        user = (User) gson.fromJson(jsonOutput, userType);
 
-        startUp.setUserId(users.get(0).getId());
+        startUp.setUserId(user.getId());
 
         Log.w("Confirm User ID Set", "YES! User ID = " + startUp.getUserId());
 
@@ -221,22 +200,22 @@ public class fblogin extends Activity {
 
         Context context;
         fblogin activity;
-        //ProgressDialog dialog;
+        ProgressDialog dialog;
 
         int streamLength = 0;
 
         public UserCreateTask(fblogin activity){
             this.activity = activity;
             this.context = activity;
-            //dialog = new ProgressDialog(currContext);
+            dialog = new ProgressDialog(currContext);
             Log.w("UserCreateTask", "In Constructor");
         }
 
         @Override
         protected void onPreExecute() {
             Log.w("UserCreateTask", "In onPreExecute");
-            Toast.makeText(currContext, "Starting CREATE_USER request!", Toast.LENGTH_SHORT).show();
-            //this.dialog.show();
+            //Toast.makeText(currContext, "Starting CREATE_USER request!", Toast.LENGTH_SHORT).show();
+            this.dialog.show();
         }
 
         @Override
@@ -255,7 +234,7 @@ public class fblogin extends Activity {
             Log.w("UserCreateTask", "In onPostExecute");
             Toast.makeText(currContext, "You have been logged in!" + result, Toast.LENGTH_LONG).show();
             onUserCreate(result);
-            //dialog.dismiss();
+            dialog.dismiss();
         }
 
         /** Initiates the fetch operation. */

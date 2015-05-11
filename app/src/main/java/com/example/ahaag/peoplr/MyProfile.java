@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -54,13 +53,13 @@ public class MyProfile extends Activity implements AdapterView.OnItemClickListen
         ImageView imageview = (ImageView) findViewById(R.id.imageView1);
         startUp.loadProfilePhoto(imageview);
 
-        Button button = (Button) findViewById(R.id.Button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), EditInfo.class);
-                startActivity(nextScreen);
-            }
-        });
+//        Button button = (Button) findViewById(R.id.Button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent nextScreen = new Intent(getApplicationContext(), EditInfo.class);
+//                startActivity(nextScreen);
+//            }
+//        });
         // Set the drawer toggle as the DrawerListener
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
